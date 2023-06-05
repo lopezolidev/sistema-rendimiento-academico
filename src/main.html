@@ -11,29 +11,102 @@
     <title>Document</title>
 </head>
 <body>
-    <div class="login_wrapper">
-        <form action="#">
-            <h1>Bienvenido/a</h1>
-            <section class="checkbox_section">
-                <h2>¿Es profesor/a?</h2>
-                <div>
-                    <input type="checkbox" name="es_profesor" id="checkbox_profesor" class="input_check">
-                    <label for="es_profesor">Sí</label>
+    <header class="title">
+        <h1>
+            Sistema Monitor Rendimiento Académico
+        </h1>
+    </header>
+    <div class="site">
+        <div class="start">
+            <div class="login_wrapper sign-up">
+                <div class="welcome-back">
+                    <div class="message">
+                        <h2>Bienvenido al Sistema Monitor de Rendimiento Academico</h2>
+                        <p>Si ya tienes una cuenta por favor inicia sesion aqui</p>
+                        <button class="sign-up-btn">Iniciar Sesion</button>
+                    </div>
                 </div>
-            </section>
-            <section class="username_section">
-                <label for="nombre_apellido">Ingrese nombre y apellido</label>
-                <input type="text" name="nombre_apellido" id="input_nombre" class="input_text">    
-            </section>
-            <section class="username_section">
-                <label for="id">Ingrese cédula de identidad</label>
-                <input type="text" name="id" id="id_persona" class="input_text">
-            </section>
-            <button type="submit">Ingresar</button>
-        </form>
-        <figure>
-            <img src="./src/arrow_perf.png" alt="performance_icon">
-        </figure>
+                <form class="formulario">
+                    <h2 class="create_account">Crear una cuenta</h2>
+                    <section class="checkbox_section">
+                        <h3>¿Es profesor/a?</h3>
+                        <div>
+                            <input type="checkbox" name="es_profesor" id="checkbox_profesor" class="input_check">
+                            <label for="es_profesor">Sí</label>
+                        </div>
+                    </section>
+                    <section class="userdata_section">
+                        <label for="user_email">Ingrese correo </label>
+                        <input type="email" name="user_email" id="input_email" class="input_text" placeholde="email" required>    
+                        <label for="id">Ingrese cédula de identidad</label>
+                        <input type="text" name="id" id="input_id" placeholde="ci" class="input_text">
+                        <input type="password" name="password" id="input_password" placeholder="contraseña" class="input_text" >
+                    </section>
+                    <input type="submit" value="Ingresar" class="sign-in-btn"></input>
+                </form>
+            </div>
+            <div class="login_wrapper sign-in">
+                <form class="formulario">
+                    <h2 class="create_account">Iniciar Sesion</h2>
+                        <h3>¿Aun no tienes cuenta?</h3>
+                    <section class="userdata_section">
+                        <input type="email" name="user_email" id="input_email" class="input_text" placeholder="email" required>    
+                        <input type="password" name="password" id="input_password" placeholder="contraseña" class="input_text" >
+                    </section>
+                    <input type="submit" value="Ingresar" class="sign-in-btn"></input>
+                </form>
+                <div class="welcome-back">
+                    <div class="message">
+                        <h2>Bienvenido de nuevo</h2>
+                        <p>Si aun no tienes una cuenta por favor registrate aqui</p>
+                        <button class="sign-in-btn">Registrarse</button>
+                    </div>
+                </div>
+            </div>
+    
+        </div>
+        
+        <section class="tabs">
+            <h2>Sistema Monitor Rendimiento Academico</h2>
+            <div class="tabs__wrapper">
+                <aside class="tabs__sidebar">
+                    <button class="tab__button" data-for-tab="1">Tab #1</button>
+                    <button class="tab__button" data-for-tab="2">Tab #2</button>
+                    <button class="tab__button" data-for-tab="3">Tab #3</button>
+                </aside>
+                <div class="tabs__content active" data-tab="1">
+                    <h3>Rendimiento Estudiantes</h3>
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Placeat magni alias itaque excepturi repudiandae mollitia quos dolorum inventore deserunt commodi sed doloribus facere assumenda, quibusdam aspernatur tenetur aperiam cumque eum?</p>
+        
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Placeat magni alias itaque excepturi repudiandae mollitia quos dolorum inventore deserunt commodi sed doloribus facere assumenda, quibusdam aspernatur tenetur aperiam cumque eum?</p>
+        
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Placeat magni alias itaque excepturi repudiandae mollitia quos dolorum inventore deserunt commodi sed doloribus facere assumenda, quibusdam aspernatur tenetur aperiam cumque eum?</p>
+        
+                </div>
+                <div class="tabs__content" data-tab="2">
+                    <h3>Subir Notas</h3>
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Placeat magni alias itaque excepturi repudiandae mollitia quos dolorum inventore deserunt commodi sed doloribus facere assumenda, quibusdam aspernatur tenetur aperiam cumque eum?</p>
+        
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Placeat magni alias itaque excepturi repudiandae mollitia quos dolorum inventore deserunt commodi sed doloribus facere assumenda, quibusdam aspernatur tenetur aperiam cumque eum?</p>
+        
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Placeat magni alias itaque excepturi repudiandae mollitia quos dolorum inventore deserunt commodi sed doloribus facere assumenda, quibusdam aspernatur tenetur aperiam cumque eum?</p>
+                    
+                </div>
+                <div class="tabs__content" data-tab="3">
+                    <h3>Notas</h3>
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Placeat magni alias itaque excepturi repudiandae mollitia quos dolorum inventore deserunt commodi sed doloribus facere assumenda, quibusdam aspernatur tenetur aperiam cumque eum?</p>
+        
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Placeat magni alias itaque excepturi repudiandae mollitia quos dolorum inventore deserunt commodi sed doloribus facere assumenda, quibusdam aspernatur tenetur aperiam cumque eum?</p>
+        
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Placeat magni alias itaque excepturi repudiandae mollitia quos dolorum inventore deserunt commodi sed doloribus facere assumenda, quibusdam aspernatur tenetur aperiam cumque eum?</p>
+                    
+                </div>
+            </div>
+        </section>
     </div>
+    
+    <script src="nodes.js"></script>
+    <script src="data.js"></script>
+    <script src="logic.js"></script>
 </body>
 </html>
