@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Insert file
+    <input type="file" id="file1">
+    <p class="show1">Show info</p>
+    <p class="show2"></p>
+    <script>
+
+        // const peo = new FileReader();
+        // console.log({peo})
+
+        function displayContent(content){
+            const element = document.querySelector('.show2');
+            element.innerText = content;
+            const contenido = JSON.parse(content);
+            console.log(contenido)
+        }
+
+        function readInfo(e){
+            console.log('hello')
+            const file = e.target.files[0];
+            if(!file){
+                return;
+            } 
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const content = e.target.result;
+                displayContent(content);
+            };
+            reader.readAsText(file);
+        }
+
+        // console.log('hello')
+        const file = document.querySelector('#file1');
+        file.addEventListener('change', readInfo, false)
+
+        
+        
+    //     function mostrarContenido(contenido) {
+    //     const elemento = document.getElementById('contenido-archivo');
+    //     elemento.innerHTML = contenido;
+    //   }
+    // function leerArchivo(e) {
+    //   const archivo = e.target.files[0];
+    //   if (!archivo) {
+    //     return;
+    //   }
+    //   const lector = new FileReader();
+    //   lector.onload = function(e) {
+    //     const contenido = e.target.result;
+    //     mostrarContenido(contenido);
+    //   };
+    //   lector.readAsText(archivo);
+    // }
+
+    // document.querySelector('#archivo1')
+    //   .addEventListener('change', leerArchivo, false);
+        
+    </script>
+</body>
+</html>
