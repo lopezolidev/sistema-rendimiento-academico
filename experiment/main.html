@@ -4,22 +4,83 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
     <title>Document</title>
 </head>
 <body>
-    Insert file
+    <h1>Insert file</h1>
     <input type="file" id="file1">
     <p class="show1">Show info</p>
-    <p class="show2"></p>
+    <div class="show2"></div>
     <script>
 
-        // const peo = new FileReader();
-        // console.log({peo})
-
         function displayContent(content){
-            const element = document.querySelector('.show2');
-            element.innerText = content;
             const contenido = JSON.parse(content);
+
+            const element = document.querySelector('.show2');
+
+            const cards_array = [];
+            let counter = 1;
+            contenido.map((el) => {
+                const container = document.createElement('div'); //contenedor grande
+                // const image_wrapper = document.createElement('div'); //contenedor de img
+                const image = document.createElement('img'); //imagen
+                const title_wrapper = document.createElement('div'); //contenedor titulo
+                const title = document.createElement('h3'); //titulo de la card
+                title.innerText = `Characters! ${counter}`;
+                counter++;
+
+                const description_box = document.createElement('section'); //contenedor de descripcion de personaje
+                const name = document.createElement('span'); //nombre personaje
+                const game = document.createElement('span'); //favourite game
+                const subscriber = document.createElement('span'); //subscriber
+
+
+                //añadido de clases a los elementos de HTML
+                container.classList.add('character_container');
+
+                // image_wrapper.classList.add('img_wrapper');
+                image.classList.add('img');
+
+                title_wrapper.classList.add('title_wrapper');
+                // title.classList.add('title');
+
+                description_box.classList.add('description_box');
+                name.classList.add('description_text');
+                game.classList.add('description_text');
+                subscriber.classList.add('description_text');
+
+
+
+                name.innerText = `Name of character:  ${el.name}`;
+                game.innerText = `Favourite game: ${el.favorite_game}`;
+                subscriber.innerText = `It's a subscriber? ${el.subscriber}`;
+                // llenado de valores
+
+                // image_wrapper.append(image); //pegar imagen en contenedor (image_wrapper)
+                container.append(image)
+                title_wrapper.append(title); //pegar titulo dentro de caja para titulos
+                description_box.append(name, game, subscriber); //pegando elementos descriptivos dentro de la description box
+                // container.append(image_wrapper); //pegando imagen
+                container.append(title_wrapper); //pegar caja de titulo (Que ya tiene titulo)
+                container.append(description_box); //pegando description box
+
+                cards_array.push(container);
+            })
+
+            element.append(...cards_array);
+
+            // console.log({cards_array}); //display en consola de arreglo de elementos HTML
+
+
+
+            // element.append(container);
+
+            // element.innerText = content;
+
             console.log(contenido)
         }
 
@@ -28,7 +89,7 @@
             const file = e.target.files[0];
             if(!file){
                 return;
-            } 
+            }
             const reader = new FileReader();
             reader.onload = function(e) {
                 const content = e.target.result;
@@ -41,8 +102,8 @@
         const file = document.querySelector('#file1');
         file.addEventListener('change', readInfo, false)
 
-        
-        
+
+
     //     function mostrarContenido(contenido) {
     //     const elemento = document.getElementById('contenido-archivo');
     //     elemento.innerHTML = contenido;
@@ -62,7 +123,7 @@
 
     // document.querySelector('#archivo1')
     //   .addEventListener('change', leerArchivo, false);
-        
+
     </script>
 </body>
 </html>

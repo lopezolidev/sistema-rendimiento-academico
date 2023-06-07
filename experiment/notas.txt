@@ -1,14 +1,62 @@
 [
   {
     "name": "Jane Doe",
-    "favorite-game": "Stardew Valley",
+    "favorite_game": "Stardew Valley",
     "subscriber": false
   },
   {
     "name": "John Doe",
-    "favorite-game": "Dragon Quest XI",
+    "favorite_game": "Dragon Quest XI",
+    "subscriber": true
+  },
+  {
+    "name": "John Doe",
+    "favorite_game": "Dragon Quest XI",
+    "subscriber": true
+  },
+  {
+    "name": "John Doe",
+    "favorite_game": "Dragon Quest XI",
+    "subscriber": true
+  },
+  {
+    "name": "John Doe",
+    "favorite_game": "Dragon Quest XI",
+    "subscriber": true
+  },
+  {
+    "name": "John Doe",
+    "favorite_game": "Dragon Quest XI",
+    "subscriber": true
+  },
+  {
+    "name": "John Doe",
+    "favorite_game": "Dragon Quest XI",
+    "subscriber": true
+  },
+  {
+    "name": "John Doe",
+    "favorite_game": "Dragon Quest XI",
+    "subscriber": true
+  },
+  {
+    "name": "John Doe",
+    "favorite_game": "Dragon Quest XI",
+    "subscriber": true
+  },
+  {
+    "name": "John Doe",
+    "favorite_game": "Dragon Quest XI",
+    "subscriber": true
+  },
+  {
+    "name": "John Doe",
+    "favorite_game": "Dragon Quest XI",
+    "subscriber": true
+  },
+  {
+    "name": "John Doe",
+    "favorite_game": "Dragon Quest XI",
     "subscriber": true
   }
 ]
-
-//txt file in JSON format
