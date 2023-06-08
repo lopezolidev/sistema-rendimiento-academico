@@ -91,7 +91,7 @@ input {
 
 .img {
     width: 100%;
-    background-image: url('https://images.pexels.com/photos/4337198/pexels-photo-4337198.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+    background-image: url('../src/assets/cube_background.jpg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;

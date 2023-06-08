@@ -1,4 +1,14 @@
-console.log('hello')
+
+
+signIn.classList.toggle('inactive')
+
+document.addEventListener('click', (e) => {
+    if(e.target === btnSignIn || e.target == btnSignUp){
+        signIn.classList.toggle('inactive');
+        signUp.classList.toggle('inactive');
+    }
+}) //logic for registration and login
+
 
 let data;
 
@@ -12,28 +22,43 @@ form.addEventListener('submit', e => {
 }) //recuperacion datos usuario
 
 function validation(obj){
-    if(!localStorage.getItem("user")){
-        //TODO: Finish user validation
+    if(obj.es_profesor === "on"){
+        obj.es_profesor = true;
+    } else {
+        obj.es_profesor = false;
     }
 
-    if(obj.id == profesor.user_id && obj.user_email == profesor.user_email){
-            console.log('welcome')
-            let newUser = obj;    
-            if(!localStorage.getItem("user")){
-                localStorage.setItem("user", JSON.stringify(newUser));
-            }
-            
-    }
+    if(localStorage.getItem("user")){
+        let personA = JSON.parse(localStorage.getItem("user"));
+
+        console.log('person A id: ')
+        console.log(personA.id);
+
+        if(personA.email === obj.email || personA.id == obj.id){
+            window.alert('Ese usuario ya existe');
+            return;
+        }
+    }  //validation function
+    
+        console.log('welcome');
+        let newUser = obj;
+        localStorage.setItem("user", JSON.stringify(newUser));
+        teachers.push(obj);
+     //validation for new users
+
+    console.log(teachers)
 } //validacion datos usuario
 
 
-console.log(localStorage.getItem("professor")) //this is a string
 
-const newProf = JSON.parse(localStorage.getItem("professor"));
-console.log(`
-Professor id: ${newProf.id},
-Professor email: ${newProf.email},
-Professor is professor: ${newProf.profesor} `)
+
+// console.log(localStorage.getItem("professor")) //this is a string
+
+// const newProf = JSON.parse(localStorage.getItem("professor"));
+// console.log(`
+// Professor id: ${newProf.id},
+// Professor email: ${newProf.email},
+// Professor is professor: ${newProf.profesor} `)
 
 
 function setUpTabs(){
@@ -62,7 +87,7 @@ function setUpTabs(){
 document.addEventListener('DOMContentLoaded', () => {
     setUpTabs();
 
-    console.log(tabs_wrapper.children[0])
+    // console.log(tabs_wrapper.children[0])
 
     let arrayOfButtons = [...tabs_wrapper.children[0].children]; //destructuring elements to make it an array instead of a nodelist
 

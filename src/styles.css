@@ -19,6 +19,11 @@ html {
     --subtitles-size: 1.8rem;
     --buttons-font-size: 2rem;
     --button-font-weight: 600;
+    --text-weight: 100;
+    --subtitles-weight: 300;
+    --titles-weight: 400;
+    --bold-weight: 500;
+    --strong-weight: 700;
 }
 
 body {
@@ -28,7 +33,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-image: url('./src/cube_background.jpg');
+    background-image: url('./assets/cube_background.jpg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -75,15 +80,16 @@ body {
     width: 90%;
     display: flex;
     justify-content: space-around;
-    transition: all .5s ease-out;
+    /* transition: all .5s ease-out; */
 }
 
 .login_wrapper {
     display: flex;
+    justify-content: space-between;
     padding: 2rem;
     margin-top: 20rem;
     height: 50rem;
-    width: 40rem;
+    width: 80%;
     border: solid 0.1rem var(--secondary-color);
     border-radius: 0.5rem;
     /* transition: all .5s ease-in-out; */
@@ -91,23 +97,41 @@ body {
     /* box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; */
 }
 
+
+/* welcome back section */
+
 .welcome-back {
     display: flex;
+    /* flex-direction: column; */
     justify-content: center;
     align-items: center;
 }
 
 .message {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4rem;
     padding: 1rem;
+    color: var(--main-color);
 }
 
 .message h2 {
+    text-align: center;
     font-size: 1.8rem;
+    font-weight: var(--subtitles-weight);
     padding: 1rem 0rem;
 }
 
+.message p {
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+/* welcome back section */
+
 .login_wrapper .formulario {
-    width: 100%;
+    width: 50%;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -121,7 +145,7 @@ body {
 }
 
 .formulario h2 {
-    font-weight: 300;
+    font-weight: var(--subtitles-weight);
     font-size: 2.4rem;
 }
 
@@ -133,8 +157,9 @@ body {
     font-size: 1.4rem;
 }
 
-.checkbox_section h3 {
-    font-weight: 300;
+h3 {
+    font-weight: var(--subtitles-weight);
+    font-size: var(--subtitles-size);
 }
 
 .login_wrapper .checkbox_section div {
@@ -168,7 +193,7 @@ body {
     height: 2rem;
 }
 
-.login_wrapper .sign-in-btn {
+.login_wrapper button {
     border: none;
     border-radius: 1.8rem;
     background-color: var(--main-color);
@@ -180,6 +205,32 @@ body {
 .sign-in-btn:hover{
     background-color: var(--secondary-color);
 }
+
+.formulario input[type="submit"]{
+    width: 50%;
+    border: none;
+    background-color: var(--secondary-color);
+    padding: 0.8rem;
+    border-radius: 1.8rem;
+    color: var(--tertiary-text-color);
+    font-weight: var(--titles-weight);
+}
+
+/* .sign-in {
+    position: absolute;
+    opacity: 0;
+    visibility: hidden;
+} /*useful to disappear element from sight */
+
+/* .sign-in.active {
+    opacity: 1;
+    visibility: visible;
+} /*applies the same for when we set this class in JS*/
+/* 
+.sign-up.active {
+    opacity: 0;
+    visibility: hidden;
+} */ 
 
 /* FINISH LOGIN */
 
@@ -253,6 +304,6 @@ body {
     display: none;
 }
 
-.active {
+/* .active {
     display: block
-}
+} */
