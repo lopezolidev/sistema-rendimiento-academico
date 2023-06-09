@@ -58,6 +58,80 @@ input {
 
 /* FINISH HEADER */
 
+/* NAVIGATION CONTAINER TEST */
+
+.navigation-container {
+    width: 80%;
+    height: 40rem;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.navigation_in_two {
+    width: 80%;
+    height: 40rem;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+}
+
+.navigation_in_three {
+    width: 80%;
+    height: 40rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+}
+
+.navigation_in_four {
+    width: 80%;
+    height: 40rem;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+
+
+
+.back-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 16rem;
+    height: 12rem;
+    font-size: 4rem;
+    background-color: white;
+    color: var(--purple-dark-1);
+}
+
+.container {
+    width: 50%;
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 16rem;
+}
+
+.cont1 {
+    background-color: red;
+}
+
+.cont2 {
+    background-color: blue;
+}
+
+.cont3 {
+    background-color: green;
+}
+
+.cont4 {
+    background-color:orange;
+}
+/* BODY STYLES*/
+
 .show2 {
     display: flex;
     padding: 2rem;
@@ -118,4 +192,10 @@ input {
 
 .description_text {
     font-weight: var(--font-weight-text2);
+}
+
+.inactive {
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
 }
