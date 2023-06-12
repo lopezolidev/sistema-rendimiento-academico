@@ -1,4 +1,5 @@
 
+const currentUser = null;
 
 signIn.classList.toggle('inactive')
 
@@ -86,42 +87,11 @@ function login_user(obj){
     else {
         window.alert('Usuario no existe'); 
     }
+
+    currentUser = obj;
+    console.log(currentUser)
 } //user sign-in function 
 
 
 
-function setUpTabs(){
-    tab_button.forEach( button => {
-        button.addEventListener('click', () => {
-            const sideBar = button.parentElement; //parent element to each button
-            const tabsContainer = sideBar.parentElement;
-            const tabNumber = button.dataset.forTab; //reffering from text content to the tab button in the side bar
-            const tabToActivate = tabsContainer.querySelector(`.tabs__content[data-tab="${tabNumber}"]`); //now we can specify the tab we want using this syntax. we're selecting from the tabs container the button with the tab number we're passing, linking each tab button to the text section
-
-            sideBar.querySelectorAll(".tab__button").forEach(button => {
-                button.classList.remove("tab_button--active")
-            })
-            
-            tabsContainer.querySelectorAll(".tabs__content").forEach(tab => {
-                tab.classList.remove("active")
-            })
-
-            button.classList.add("tab_button--active")
-            tabToActivate.classList.add("active")
-
-        })
-    })
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-    setUpTabs();
-
-    // console.log(tabs_wrapper.children[0])
-
-    let arrayOfButtons = [...tabs_wrapper.children[0].children]; //destructuring elements to make it an array instead of a nodelist
-
-    arrayOfButtons.forEach(button => {
-        button.click();
-    }) //making default option last button
-})
 
