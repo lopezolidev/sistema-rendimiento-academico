@@ -16,7 +16,8 @@ html {
     --additional-color-1: #f594b7;
     --additional-color-2:#dddddd;
     --strong-green: #98ca3f;
-    --subtitles-size: 1.8rem;
+    --text-size: 1.4rem;
+    --subtitles-size: 2rem;
     --buttons-font-size: 2rem;
     --button-font-weight: 600;
     --text-weight: 100;
@@ -216,21 +217,6 @@ h3 {
     font-weight: var(--titles-weight);
 }
 
-/* .sign-in {
-    position: absolute;
-    opacity: 0;
-    visibility: hidden;
-} /*useful to disappear element from sight */
-
-/* .sign-in.active {
-    opacity: 1;
-    visibility: visible;
-} /*applies the same for when we set this class in JS*/
-/* 
-.sign-up.active {
-    opacity: 0;
-    visibility: hidden;
-} */ 
 
 /* FINISH LOGIN */
 
@@ -245,67 +231,70 @@ h3 {
 .home {
     width: 100%;
     margin-top: 8rem;
+    height: 116rem;
     display: flex;
-    gap: 2rem;
     padding: 2rem;
-    /* border: solid 0.1rem var(--secondary-color);
-    border-radius: 2rem;
-    margin-inline: 4rem; */
     backdrop-filter: blur(1.6rem);
 }
 
-.tabs h2 {
-    font-weight: var(--subtitles-weight);
-    font-size: var(--subtitles-size);
+.info-side{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-around;
     color: var(--main-color);
 }
 
-.tabs__wrapper {
+.info-side .info_1{
     display: flex;
-    width: 100%;
-    height: 100%;
-    border: 0.1rem solid var(--main-color);
+    gap: 2rem;
+    justify-content: space-around;
+    align-items: center;
+    width: 80%;
 }
 
-.tabs__sidebar {
+.info_1 p {
+    width: 50%;
+}
+
+.info-side .info_sec {
+    border-bottom: thin solid var(--secondary-color);
+    width: 80%;
+    padding-block-end: 2rem;
+    font-size: var(--text-size);
+}
+.info-side h2 {
+    font-size: var(--subtitles-size);
+    font-weight: var(--subtitles-weight);
+}
+
+.info_2 {
     display: flex;
     flex-direction: column;
-    width: 32rem;
+    gap: 1.6rem;
 }
 
-.tab__button {
-    /* background-color: var(--secondary-color); */
-    backdrop-filter: blur(1.6rem);
-    /* border: thin solid var(--main-color); */
-    padding: 1rem;
-    outline: none;
-    cursor: pointer;
-    height: 6rem;
-    width: 12rem;
-    color: var(--secondary-color);
-    background-color: transparent;
+.info_3 {
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
 }
 
-
-
-.tab__button:active {
-    background-color: var(--additional-color-2);
+.info_4 {
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
 }
 
-/* .tab__button:not(:last-of-type){
-    background: var(--tertiary-text-color);
-} */
+.info-side p {
+    font-size: var(--text-size);
+    font-weight: var(--subtitles-weight);
+    width: 80%;
+}
 
-/* .tab__button--active {
-    font-weight: bold;
-    border-right: solid 0.3rem var(--main-color);
-    background-color: var(--additional-color-2);
-} */
-
-.tabs__content {
-    font-size: 1.2rem;
-    padding: 1.6rem;
-    /* display: none */
+.nav-side {
+    width: 50%;
 }
 
 /* FINISH TABS VIEW */

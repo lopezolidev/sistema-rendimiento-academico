@@ -65,7 +65,7 @@ class Student extends User {
             email,
             password,
             profesor_status,
-            courses = [],
+            // courses = [],
             )
         this.id = id;
         this.email = email;
@@ -294,21 +294,6 @@ let students = [
     student7,
     student8,
 ]
-
-// const newStudent = new Student({
-//     id: 111111111 ,
-//     email: "inherited@gmail.com",
-//     password: "randomPassword",
-//     profesor_status: false,
-//     courses: [
-//         algProg,
-//         Intro,
-//         math,
-//         discMath
-//     ]
-// })
-
-// students.push(newStudent)
 
 console.log(students)
 

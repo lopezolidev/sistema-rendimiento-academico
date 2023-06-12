@@ -43,7 +43,7 @@
                         <input type="text" name="id" id="input_id" placeholde="ci" class="input_text">
                         <input type="password" name="password" id="input_password--register" placeholder="contraseña" class="input_text" >
                     </section>
-                    <input type="submit" value="Registrarse"></input>
+                    <input type="submit" value="Registrarse" class="registration_btn"></input>
                 </form>
             </div>
             <div class="login_wrapper sign-in">
@@ -54,7 +54,7 @@
                         <input type="email" name="email" id="input_email--login" class="input_text" placeholder="email" required>    
                         <input type="password" name="password" id="input_password--login" placeholder="contraseña" class="input_text" >
                     </section>
-                    <input type="submit" value="Ingresar" class="sign-in-btn"></input>
+                    <input type="submit" value="Ingresar" class="sign-in-btn login_btn"></input>
                 </form>
                 <div class="welcome-back">
                     <div class="message">
@@ -70,12 +70,56 @@
         <section class="home">
             <aside class="info-side">
                 <h2>¿Qué es el SMRA?</h2>
-                <article class="info_1">
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsum natus, excepturi ad pariatur tenetur cupiditate atque id repellat earum labore? Doloremque doloribus illo nisi quod corrupti autem veritatis eveniet cupiditate.
+                <article class="info_1 info_sec">
+                    <p>
+                        El Sistema Monitor de Rendimiento Académico (SMRA) es una herramienta diseñada para la efectiva gestión académica del estudiante y el profesor. Bien el primero para evaluar su desempeño y el segundo para conocer el de su clase. 
+                    </p>
+                    <img src="./assets/arrow_perf.png" alt="arrow_perf" class="arrow_perf">
                 </article>
-                <article class="info_2">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur aspernatur exercitationem minima eum doloremque autem enim dignissimos ad, quo cupiditate voluptas ea quia atque aliquam! Quisquam illo officia laboriosam maxime.
+                <h2>¿En qué consiste el SMRA?</h2>
+                <article class="info_2 info_sec">
+                    <p> SMRA consiste en el agrupamiento y análisis de:</p>
+                    <ul>
+                        <li>Notas obtenidas por el estudiante en la asignatura y notas globales</li>
+                        <li>Horas de estudio por materia</li>
+                    </ul>
+                </article>                
+                <h2>¿Por Qué es Necesario?</h2>
+                <article class="info_3 info_sec">
+                    <p>
+                        Tanto el estudiante y el profesor merecen estar informados del desempeño estudiantil, a nivel personal en el estudiante y a nivel general de la clase para el profesor.
+                    </p>
+                    <p>
+                        Sin embargo el estudiante goza de los siguientes beneficios particulares:
+                    </p>
+                    <ul>
+                        <li>Visualización detallada y precisa sobre su desempeño</li>
+                        <li>Recomendaciones acerca de su calidad de estudio</li>
+                        <li>Herramienta personal para su autoevaluación</li>
+                    </ul>
                 </article>
+                <h2>¿Cómo se Calcula?</h2>
+                <article class="info_4 info_sec">
+                    <p>
+                        El SMRA tiene como base para su implementación 10 horas planificadas de estudio por materia, contando en total con 40 horas de estudio por materia por semana en un grupo de 4 materias inscritas.
+                    </p>
+                    <p>
+                        Se toma un escenario ideal de 40 horas de estudio para un examen mensual valorado en 20 puntos para una materia. A partir de este escenario se proceden los cálculos y resultados del Rendimiento Académico.
+
+                    </p>
+                    <p>
+                        Es decir, escenario ideal: 20 puntos obtenidos en el examen mensual, el cual el estudiante realizó 40 horas de estudio para dicha materia.
+                    </p>                    
+                </article>
+                <h2>¿Otros Indicadores de Interés?</h2>
+                <article class="info_5 info_sec">
+                    <p>Se toma en cuenta también de manera informativa: </p> 
+                    <ul>
+                        <li>Notas generales</li>
+                        <li>Créditos por materia</li>
+                    </ul>
+                </article>
+                <p>El SMRA también añade recomendaciones según el desempeño del estudiante, es decir, añade sensibilidad de resultados al análisis</p>
             </aside>
             <div class="nav-side">
                 <button class="back_button"> ← Atrás</button>
@@ -150,58 +194,25 @@
         </section>
  
 
-        <div class="location_container loc_con_6">
-            <h2>Mi Seccion</h2>
-            <section class="students-display">
-                <!-- George section -->
-            </section>
-        </div>
-        <div class="location_container loc_con_7">
-            <h2>Mi perfil</h2>
-            <section class="performance-display">
-                <!-- George section -->
-            </section>
-        </div>
-            <!-- <h2>Sistema Monitor Rendimiento Academico</h2>
-            <div class="tabs__wrapper">
-                <aside class="tabs__sidebar">
-                    <button class="tab__button" data-for-tab="1">¿Que es el SMRA?</button>
-                    <button class="tab__button" data-for-tab="2">Navegacion</button>
-                    <button class="tab__button" data-for-tab="3">Tab #3</button>
-                </aside>
-                <div class="tabs__content active" data-tab="1">
-                    <h3>Rendimiento Estudiantes</h3>
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Placeat magni alias itaque excepturi repudiandae mollitia quos dolorum inventore deserunt commodi sed doloribus facere assumenda, quibusdam aspernatur tenetur aperiam cumque eum?</p>
-        
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Placeat magni alias itaque excepturi repudiandae mollitia quos dolorum inventore deserunt commodi sed doloribus facere assumenda, quibusdam aspernatur tenetur aperiam cumque eum?</p>
-        
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Placeat magni alias itaque excepturi repudiandae mollitia quos dolorum inventore deserunt commodi sed doloribus facere assumenda, quibusdam aspernatur tenetur aperiam cumque eum?</p>
-        
-                </div>
-                <div class="tabs__content" data-tab="2">
-                    <h3>Instituciones</h3>
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Placeat magni alias itaque excepturi repudiandae mollitia quos dolorum inventore deserunt commodi sed doloribus facere assumenda, quibusdam aspernatur tenetur aperiam cumque eum?</p>
-        
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Placeat magni alias itaque excepturi repudiandae mollitia quos dolorum inventore deserunt commodi sed doloribus facere assumenda, quibusdam aspernatur tenetur aperiam cumque eum?</p>
-        
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Placeat magni alias itaque excepturi repudiandae mollitia quos dolorum inventore deserunt commodi sed doloribus facere assumenda, quibusdam aspernatur tenetur aperiam cumque eum?</p>
-                    
-                </div>
-                <div class="tabs__content" data-tab="3">
-                    <h3>REST</h3>
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Placeat magni alias itaque excepturi repudiandae mollitia quos dolorum inventore deserunt commodi sed doloribus facere assumenda, quibusdam aspernatur tenetur aperiam cumque eum?</p>
-        
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Placeat magni alias itaque excepturi repudiandae mollitia quos dolorum inventore deserunt commodi sed doloribus facere assumenda, quibusdam aspernatur tenetur aperiam cumque eum?</p>
-        
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Placeat magni alias itaque excepturi repudiandae mollitia quos dolorum inventore deserunt commodi sed doloribus facere assumenda, quibusdam aspernatur tenetur aperiam cumque eum?</p>
-                    
-                </div>
-            </div> -->
+        <section class="user_section">
+            <div class="location_container loc_con_6">
+                <h2>Mi Seccion</h2>
+                <section class="students-display">
+                    <!-- George section -->
+                </section>
+            </div>
+            <div class="location_container loc_con_7">
+                <h2>Mi perfil</h2>
+                <section class="performance-display">
+                    <!-- George section -->
+                </section>
+            </div>    
         </section>
     </div>
     
     <script src="nodes.js"></script>
     <script src="data.js"></script>
     <script src="logic.js"></script>
+    <script src="navigation.js"></script>
 </body>
 </html>
