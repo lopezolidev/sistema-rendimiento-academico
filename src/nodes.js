@@ -1,4 +1,5 @@
-const form = document.querySelector("form")
+const form = document.querySelector("form");
+const singInForm = document.getElementById("signInForm")
 const btnSignIn = document.querySelector(".sign-in-btn")
 const btnSignUp = document.querySelector(".sign-up-btn");
 const signUp = document.querySelector(".sign-up");

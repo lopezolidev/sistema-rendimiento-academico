@@ -43,22 +43,51 @@ function validation(obj){
         console.log('welcome');
         let newUser = obj;
         localStorage.setItem("user", JSON.stringify(newUser));
-        teachers.push(obj);
-     //validation for new users
 
-    console.log(teachers)
+        if(obj.es_profesor) {
+            teachers.push(obj);
+            console.log(teachers)
+        } else {
+            students.push(obj)
+            console.log(students)
+        }
+        
+     //validation for new users
 } //validacion datos usuario
 
 
 
+let sign_in_data; //variable to store sing in data
 
-// console.log(localStorage.getItem("professor")) //this is a string
+singInForm.addEventListener('submit', e => {
+    e.preventDefault();
+    sign_in_data = Object.fromEntries(
+        new FormData(e.target) //creating a FormData instance from FormData prototype, therefore acquiring all the necessary information to validate and store
+    )
+    console.log({sign_in_data})  //retrieving information from user
 
-// const newProf = JSON.parse(localStorage.getItem("professor"));
-// console.log(`
-// Professor id: ${newProf.id},
-// Professor email: ${newProf.email},
-// Professor is professor: ${newProf.profesor} `)
+    login_user(sign_in_data);  
+})
+
+
+function login_user(obj){
+    let matchTeacher = teachers.some( teacher => teacher.email === obj.email && teacher.password === obj.password); //teacher login data
+
+    let matchStudent = students.some( student => student.email === obj.email && student.password === obj.password); //student login data
+
+ 
+     if(matchStudent){
+        console.log('welcome student')
+        //TODO: CHANGE VIEW
+    } else if (matchTeacher) {
+        console.log('welcome teacher')
+        //TODO: CHANGE VIEW
+    } //student and teacher's password and email will not match between them 
+    else {
+        window.alert('Usuario no existe'); 
+    }
+} //user sign-in function 
+
 
 
 function setUpTabs(){

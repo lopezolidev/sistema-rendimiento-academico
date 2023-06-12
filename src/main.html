@@ -15,6 +15,7 @@
         <h1>
             Sistema Monitor Rendimiento Académico
         </h1>
+        
     </header>
     <div class="site">
         <div class="start">
@@ -26,7 +27,7 @@
                         <button class="sign-in-btn">Iniciar Sesion</button>
                     </div>
                 </div>
-                <form class="formulario">
+                <form class="formulario" id="signUpForm">
                     <h2 class="create_account">Crear una cuenta</h2>
                     <section class="checkbox_section">
                         <h3>¿Es profesor/a?</h3>
@@ -46,7 +47,7 @@
                 </form>
             </div>
             <div class="login_wrapper sign-in">
-                <form class="formulario">
+                <form class="formulario" id="signInForm">
                         <h2 class="create_account">Iniciar Sesion</h2>
                         <h3>¿Aun no tienes cuenta?</h3>
                     <section class="userdata_section">
@@ -66,12 +67,106 @@
     
         </div>
         
-        <section class="tabs">
-            <h2>Sistema Monitor Rendimiento Academico</h2>
+        <section class="home">
+            <aside class="info-side">
+                <h2>¿Qué es el SMRA?</h2>
+                <article class="info_1">
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsum natus, excepturi ad pariatur tenetur cupiditate atque id repellat earum labore? Doloremque doloribus illo nisi quod corrupti autem veritatis eveniet cupiditate.
+                </article>
+                <article class="info_2">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur aspernatur exercitationem minima eum doloremque autem enim dignissimos ad, quo cupiditate voluptas ea quia atque aliquam! Quisquam illo officia laboriosam maxime.
+                </article>
+            </aside>
+            <div class="nav-side">
+                <button class="back_button"> ← Atrás</button>
+                <section class="locations-section">
+                    
+
+                    <div class="location_container loc_con_1">
+                        <h3>Instituciones</h3>
+
+                        <section class="slots_container">
+                            <div class="UCV location">UCV</div>
+                            <div class="USB location">USB</div>
+                            <div class="UCAB location">UCAB</div>
+                            <div class="UNEXPO location">UNEXPO</div>
+                        </section>
+                    </div>
+                    
+                    <div class="location_container loc_con_2">
+                        <h3>Facultades</h3>
+
+                        <section class="slots_container">
+                            <div class="faculty location">Facultad Agro</div>
+                            <div class="faculty location">Facultad Arquitectura y Urbanismo</div>
+                            <div class="faculty location">Facultad de Ciencias</div>
+                            <div class="faculty location">Facultad de Ciencias </div>                    
+                            <div class="faculty location">Facultad de Farmacia</div>                    
+                            <div class="faculty location">Facultad de Humanidades y Educacion</div>                    
+                            <div class="faculty location">Facultad de Ingenieria</div>                    
+                            <div class="faculty location">Facultad de Ciencias Juridicas y Politicas</div>                    
+                            <div class="faculty location">Facultad de Medicina</div>                    
+                            <div class="faculty location">Facultad de Odontología</div>                    
+                            <div class="faculty location">Facultad de Veterinaria</div>
+                        </section>
+                    </div>    
+                        
+                    <div class="location_container loc_con_3">
+                        <h3>Escuelas</h3>
+                        <section class="slots_container">
+                            <div class="bio location">Biologia</div>
+                            <div class="comp location">Computacion</div>
+                            <div class="fis location">Fisica</div>
+                            <div class="geoquim location">Geoquimica</div>
+                            <div class="mat location">Matematica</div>
+                            <div class="quim location">Quimica</div>
+                        </section>
+                    </div>
+
+                    <div class="location_container loc_con_4">
+                        <h3>Ofertas</h3>
+                        <section class="slots_container">
+                            <div class="pregra location">Pregrado</div>
+                            <div class="pregra location">Posgrado</div>
+                            <div class="pregra location">Extension</div>
+                        </section>
+                    </div>
+                    <div class="location_container loc_con_5">
+                        <h3>Semestres</h3>
+                        <section class="slots_container">
+                            <div class="s1 location">Semestre I</div>
+                            <div class="s1 location">Semestre II</div>
+                            <div class="s1 location">Semestre III</div>
+                            <div class="s1 location">Semestre IV</div>
+                            <div class="s1 location">Semestre V</div>
+                            <div class="s1 location">Semestre VI</div>
+                            <div class="s1 location">Semestre VII</div>
+                            <div class="s1 location">Semestre VIII</div>
+                            <div class="s1 location">Semestre XI</div>
+                            <div class="s1 location">Semestre X</div>
+                        </section>
+                    </div>
+            </div>
+        </section>
+ 
+
+        <div class="location_container loc_con_6">
+            <h2>Mi Seccion</h2>
+            <section class="students-display">
+                <!-- George section -->
+            </section>
+        </div>
+        <div class="location_container loc_con_7">
+            <h2>Mi perfil</h2>
+            <section class="performance-display">
+                <!-- George section -->
+            </section>
+        </div>
+            <!-- <h2>Sistema Monitor Rendimiento Academico</h2>
             <div class="tabs__wrapper">
                 <aside class="tabs__sidebar">
-                    <button class="tab__button" data-for-tab="1">Tab #1</button>
-                    <button class="tab__button" data-for-tab="2">Tab #2</button>
+                    <button class="tab__button" data-for-tab="1">¿Que es el SMRA?</button>
+                    <button class="tab__button" data-for-tab="2">Navegacion</button>
                     <button class="tab__button" data-for-tab="3">Tab #3</button>
                 </aside>
                 <div class="tabs__content active" data-tab="1">
@@ -84,7 +179,7 @@
         
                 </div>
                 <div class="tabs__content" data-tab="2">
-                    <h3>Subir Notas</h3>
+                    <h3>Instituciones</h3>
                     <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Placeat magni alias itaque excepturi repudiandae mollitia quos dolorum inventore deserunt commodi sed doloribus facere assumenda, quibusdam aspernatur tenetur aperiam cumque eum?</p>
         
                     <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Placeat magni alias itaque excepturi repudiandae mollitia quos dolorum inventore deserunt commodi sed doloribus facere assumenda, quibusdam aspernatur tenetur aperiam cumque eum?</p>
@@ -93,7 +188,7 @@
                     
                 </div>
                 <div class="tabs__content" data-tab="3">
-                    <h3>Notas</h3>
+                    <h3>REST</h3>
                     <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Placeat magni alias itaque excepturi repudiandae mollitia quos dolorum inventore deserunt commodi sed doloribus facere assumenda, quibusdam aspernatur tenetur aperiam cumque eum?</p>
         
                     <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Placeat magni alias itaque excepturi repudiandae mollitia quos dolorum inventore deserunt commodi sed doloribus facere assumenda, quibusdam aspernatur tenetur aperiam cumque eum?</p>
@@ -101,7 +196,7 @@
                     <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Placeat magni alias itaque excepturi repudiandae mollitia quos dolorum inventore deserunt commodi sed doloribus facere assumenda, quibusdam aspernatur tenetur aperiam cumque eum?</p>
                     
                 </div>
-            </div>
+            </div> -->
         </section>
     </div>
     

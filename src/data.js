@@ -34,15 +34,6 @@ class User {
             this.profesor_status = true;
         }
     }
-    addCourse(course){
-        this.courses.push(course);
-    }
-    deleteCourse(course){
-        let index = this.courses.indexOf(course);
-        if( index > -1){
-            this.courses.splice(index, 1);
-        }
-    }
     get user_id(){
         return this.id;
     }
@@ -52,7 +43,46 @@ class User {
     get user_prof(){
         return this.prof;
     }
-}
+} //parent class User, where Student and Teacher inherit
+
+class Student extends User {
+    constructor({
+        id,
+        email,
+        password,
+        profesor_status,
+        courses = [],
+    }
+    = {
+        id:1,
+        email: "email",
+        password: "password",
+        profesor_status: false,
+    }) //setting default values to keys as literal object in the constructor)
+    {
+        super(        
+            id,
+            email,
+            password,
+            profesor_status,
+            courses = [],
+            )
+        this.id = id;
+        this.email = email;
+        this.password = password;
+        this.profesor_status = profesor_status;
+        this.courses = courses;
+    }
+    addCourse(course){
+        this.courses.push(course);
+    }
+    deleteCourse(course){
+        let index = this.courses.indexOf(course);
+        if( index > -1){
+            this.courses.splice(index, 1);
+        }
+    }
+} //adding OOP to construct students from class User, therefore adding methods to the Student unavailable to the teacher
 
 class Courses {
     constructor({
@@ -106,7 +136,7 @@ const discMath = new Courses({
 
 
 
-const profesor1 = new User({
+const teacher1 = new User({
     id: 10345987,
     email:  "teacheremail@gmail.com",
     password: "pa$$w0rD",
@@ -114,7 +144,7 @@ const profesor1 = new User({
     courses: [algProg]
 });
 
-const profesor2 = new User({
+const teacher2 = new User({
     id: 24587963,
     email: "samaltman@gmail.com",
     password: "trJ487Ku",
@@ -122,7 +152,7 @@ const profesor2 = new User({
     courses: [Intro],
 });
 
-const profesor3 = new User({
+const teacher3 = new User({
         id: 86125472,
         email: "example_mail@gmail.com",
         password: "KDuwj7%6",
@@ -130,7 +160,7 @@ const profesor3 = new User({
         courses: [math],
 });
 
-const profesor4 = new User({
+const teacher4 = new User({
     id: 93314587,
     email: "gdgpst@gmail.com",
     password: "fKDK4e67/",
@@ -141,15 +171,15 @@ const profesor4 = new User({
 //instantiating users
 
 let teachers = [
-    profesor1,
-    profesor2,
-    profesor3,
-    profesor4,
+    teacher1,
+    teacher2,
+    teacher3,
+    teacher4,
 ];
 
 console.log(teachers)
 
-const student1 = new User({
+const student1 = new Student({
     id: 28457966,
     email: "gatoalegre@gmail.com",
     password: "45FJD87)",
@@ -163,7 +193,7 @@ const student1 = new User({
 })
 
 
-const student2 = new User({
+const student2 = new Student({
     id: 30458789,
     email: "solestial@gmail.com",
     password: "7C,uK+nA",
@@ -176,7 +206,7 @@ const student2 = new User({
     ]
 })
 
-const student3 = new User({
+const student3 = new Student({
     id: 27156330 ,
     email: "saltos@gmail.com",
     password: "45/!JD87",
@@ -189,7 +219,7 @@ const student3 = new User({
     ]
 })
 
-const student4 = new User({
+const student4 = new Student({
     id: 30926803,
     email: "chillibomb@gmail.com",
     password: "2E/eX.5y",
@@ -202,7 +232,7 @@ const student4 = new User({
     ]
 })
 
-const student5 = new User({
+const student5 = new Student({
     id: 34748435,
     email: "saltamontes@email.com",
     password: "V%4uX{QW",
@@ -215,7 +245,7 @@ const student5 = new User({
     ]
 })
 
-const student6 = new User({
+const student6 = new Student({
     id: 23591022,
     email: "chocotorbellino@gmail.com",
     password: "M*wfRZ-S",
@@ -228,7 +258,7 @@ const student6 = new User({
     ]
 })
 
-const student7 = new User({
+const student7 = new Student({
     id: 26208040,
     email: "cazafantasma@gmail.com",
     password: "Cm$*vqB4",
@@ -241,7 +271,7 @@ const student7 = new User({
     ]
 })
 
-const student8 = new User({
+const student8 = new Student({
     id: 29853495 ,
     email: "espirituoso@gmail.com",
     password: "Yr43/6qt",
@@ -264,6 +294,21 @@ let students = [
     student7,
     student8,
 ]
+
+// const newStudent = new Student({
+//     id: 111111111 ,
+//     email: "inherited@gmail.com",
+//     password: "randomPassword",
+//     profesor_status: false,
+//     courses: [
+//         algProg,
+//         Intro,
+//         math,
+//         discMath
+//     ]
+// })
+
+// students.push(newStudent)
 
 console.log(students)
 
