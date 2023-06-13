@@ -47,6 +47,7 @@ function myClass(){
     homeScreen.classList.add('inactive');
     userSection.classList.remove('inactive');
     studentSection.classList.add('inactive');
+    renderStudents(studentsCardsSection, students, currentUser)
 }
 
 function myProfile(){
@@ -55,4 +56,5 @@ function myProfile(){
     homeScreen.classList.add('inactive');
     userSection.classList.remove('inactive');
     teacherSection.classList.add('inactive');
+    renderSubject(performance_wrapper, currentUser);
 }

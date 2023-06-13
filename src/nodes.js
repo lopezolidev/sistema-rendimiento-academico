@@ -11,6 +11,8 @@ const faculties = document.querySelector('.loc_con_2');
 const schools = document.querySelector('.loc_con_3');
 const offers = document.querySelector('.loc_con_4');
 const semesters = document.querySelector('.loc_con_5');
+const performance_wrapper = document.querySelector('.performance-wrapper');
+
 
 //buttons and tabs sections
 const box = document.querySelector(".aside");
@@ -30,14 +32,21 @@ const performanceIndStudent = document.querySelector('.performance-indicator');
 const subjectsStudent = document.querySelector('.subjects');
 
 //teacher and student sections
-const teacherSection = document.querySelector(".loc_con_6");
 const studentSection = document.querySelector(".loc_con_7");
 const notasBtn = document.getElementById('notas');
 const rendimientoBtn = document.getElementById('rendimiento');
 const materiasBtn = document.getElementById('materias');
 const printNotasBtn = document.getElementById('print_notas');
+const myProfileData = document.querySelector('.my_profile_data');
 
-console.log({gradesStudent})
+const teacherSection = document.querySelector(".loc_con_6");
+const myClassHeader = document.querySelector('.loc_con_6--header');
+const studentsCardsSection = document.querySelector('.students-display');
+
+
+// console.log({studentsCardsSection})
+
+// console.log({gradesStudent})
 
 // gradesStudent.classList.add('inactive');
 

@@ -36,28 +36,40 @@ function validation(obj){
         localStorage.setItem("user", JSON.stringify(newUser));
 
         if(obj.es_profesor) {
-            user = obj;
-            user.courses = [algProg]; //algorithms and programming professor as default
+            let user = new User({
+                id: parseInt(obj.id),
+                email: obj.email,
+                password: obj.password,
+                profesor_status: obj.es_profesor,
+            }) //instancing profesor as an object of User class
+
+            user.courses.push(algProg) //algorithms and programming professor as default
             
-            teachers.push(obj);
+            teachers.push(user);
             // console.log(teachers)
             entranceFlag = true;
 
             return user;
         } else {
-            user = obj;
-            user.courses = [
-                algProg,
-                Intro,
-                math,
-                discMath
+            let student = new Student({
+                id: parseInt(obj.id),
+                email: obj.email,
+                password: obj.password,
+                profesor_status: obj.es_profesor,
+            })  //instancing student as an object of Student class
+            
+            student.courses = [
+                algProg1,
+                Intro2,
+                math3,
+                discMath4
             ]
             students.push(obj)
             // console.log(students)
 
             entranceFlag = true;
 
-            return user;
+            return student;
         }
         
 
@@ -209,11 +221,93 @@ semestreI.addEventListener('click', () => {
 
 // ============================================================== //
 
-// micro navigation student section ↓
+// rendering class section ↓ STUDENTS CARDS
+
+function renderStudents(studentsContainer, studentsArray, currentUser){
+    studentsContainer.innerHTML = '';
+
+    myClassHeader.children[1].append(`${currentUser.courses[0].name}`);
+
+    let student_cards_box = [];
+ 
+    student_cards_box = studentsArray.map(student => {
+        const student_card = document.createElement('div');
+        student_card.classList.add('student-card');
+
+        const student_card_Id = document.createElement('h3');
+        student_card_Id.innerText = `Id: ${student.id}`;
+
+        const student_card_email = document.createElement('h3');
+        student_card_email.innerText = `Email: ${student.email}`;
+
+        const student_card_grades = document.createElement('div');
+        student_card_grades.classList.add('student-card-grades');
+
+        const nota1 = document.createElement('h4');
+        const nota2 = document.createElement('h4');
+        const nota3 = document.createElement('h4');
+        const nota4 = document.createElement('h4');
+        const promedio = document.createElement('h4');
+        const rendimiento = document.createElement('h4');
+
+        
+        student.courses.map(course => {
+            if(course.id === currentUser.courses[0].id){
+                nota1.innerText = `Nota 1: ${course.grades[0]}`;
+                nota2.innerText = `Nota 2: ${course.grades[1]}`;
+                nota3.innerText = `Nota 3: ${course.grades[2]}`;
+                nota4.innerText = `Nota 4: ${course.grades[3]}`;
+                promedio.innerText = `Promedio: ${course.getGradesAvg()}`;
+                rendimiento.innerText = `Rendimiento: ${parseFloat((course.getAP()) * (100 / 0.5).toFixed(2))}%`;
+            }
+        })
+
+        student_card_grades.append(nota1, nota2, nota3, nota4, promedio, rendimiento);
+
+        const downloadGradesBtn = document.createElement('button');
+        downloadGradesBtn.classList.add('student-card_button');
+        downloadGradesBtn.innerText = 'Descargar Datos';
+
+        student_card.append(student_card_Id, student_card_email, student_card_grades, downloadGradesBtn);
+
+        return student_card;
+    })
+
+    console.log(student_cards_box);
+
+    studentsContainer.append(...student_cards_box);
+} //function for rendering students with their own information according to section
 
 
-function renderSubject(obj, student){
-    obj.innerHTML = '';
+
+// ============================================================== //
+
+// rendering student section ↓
+
+
+function recom(ap){
+    if(ap <= 25){
+        return 'Debes mejorar tu método de estudio y responsabilizarte más';
+    } else if(ap > 25 && ap <= 50){
+        return 'Puedes lograr mucho más, enfócate y supera las dificultades. Cambia tus hábitos para que tu esfuerzo sea recompensado';
+    } else if(ap > 50 && ap <= 75){
+        return 'Bien hecho. Puedes lograr algo mejor, afina tus habilidades y alcanzarás mayores logros';
+    } else {
+        return 'Excelente. Sigue así';
+    }
+}
+
+function renderSubject(performance_box, student){
+    performance_box.innerHTML = '';
+    
+    console.log({myProfileData})
+
+    myProfileData.children[1].innerText = `Id: ${student.id}`
+    myProfileData.children[2].innerText = `E-mail: ${student.email}`
+
+
+    let grades_box = document.createElement('div');
+    grades_box.classList.add('grades', 'perf_cont');
 
     let gradesElements = [];
 
@@ -247,8 +341,46 @@ function renderSubject(obj, student){
         return grade_perf_cont;
     })
     
-    obj.append(...gradesElements)
+    grades_box.append(...gradesElements);
+
+    const academic_perf = document.createElement('div');
+    academic_perf.classList.add('performance-indicator', 'perf_cont');
+
+    const academic_perf_title = document.createElement('h2');
+    academic_perf_title.innerText = 'Rendimiento académico y recomendaciones';
+
+    const academic_perf_subcontainer = document.createElement('div');
+    academic_perf_subcontainer.classList.add('perf_subcontainer');
+    
+    const subcontainer_perf_ind = document.createElement('p')
+    subcontainer_perf_ind.classList.add('perf_ind');
+
+    const subcontainer_perf_recom = document.createElement('p');
+    subcontainer_perf_recom.classList.add('perf_recom');
+
+    student.calculateRA();
+    student.getTotalRac();
+    
+    subcontainer_perf_ind.innerText = `${student.ap}%`;
+    subcontainer_perf_recom.innerText = recom(student.ap);
+
+    academic_perf_subcontainer.append(subcontainer_perf_ind, subcontainer_perf_recom);
+
+    const downloadData = document.createElement('button');
+    downloadData.innerText = 'Descargar Datos';
+    downloadData.classList.add('btn');
+
+    academic_perf.append(academic_perf_title, academic_perf_subcontainer, downloadData);
+
+
+    performance_box.append(grades_box, academic_perf);
 }
 
-renderSubject(gradesStudent, student2)
+
+
+// renderSubject(performance_wrapper, currentUser)
 // renderSubject(gradesStudent, student3)
+
+//  currentUser = students[0] //default option
+
+// window.addEventListener('DOMContentLoaded', renderSubject(performance_wrapper, currentUser));

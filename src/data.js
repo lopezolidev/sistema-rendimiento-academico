@@ -89,19 +89,21 @@ class Student extends User {
     }
     calculateRA(){
         let i = 0;
-        while(i < this.rac.length){
-            rac.push(this.courses[i].getAP);
+        while(i < this.courses.length){
+            this.rac.push(this.courses[i].getAP());
             i++;
         }
         return this.rac;
         // return avg / this.rac.length;
     }
     getTotalRac(){
-        let avg;
-        this.rac.map(ra => {
-            avg += ra;
-        })
-        return avg / this.rac.length;
+        let avg = 0;
+        let i = 0;
+        while(i < this.rac.length){
+            avg += this.rac[i];
+            i++
+        }
+        this.ap = parseFloat(((avg / this.rac.length).toFixed(2)) * (100/0.5));
     }
 } //adding OOP to construct students from class User, therefore adding methods to the Student unavailable to the teacher
 
@@ -153,6 +155,15 @@ class Courses {
         this.ap = parseFloat((totalGrades / this.getStudyHours()).toFixed(2));
 
         return this.ap;
+    }
+    getGradesAvg(){
+        let total = 0;
+        let i = 0;
+        while(i < this.grades.length){
+            total += this.grades[i];
+            i++;
+        }
+        return total / this.grades.length;
     }
 } //class to create courses for students
 
@@ -588,6 +599,9 @@ const student1 = new Student({
     ]
 })
 
+student1.calculateRA();
+student1.getTotalRac();
+
 const student2 = new Student({
     id: 30458789,
     email: "solestial@gmail.com",
@@ -601,6 +615,8 @@ const student2 = new Student({
     ]
 })
 
+student2.calculateRA();
+student2.getTotalRac();
 
 const student3 = new Student({
     id: 27156330 ,
@@ -615,6 +631,9 @@ const student3 = new Student({
     ]
 })
 
+student3.calculateRA();
+student3.getTotalRac();
+
 const student4 = new Student({
     id: 30926803,
     email: "chillibomb@gmail.com",
@@ -627,6 +646,9 @@ const student4 = new Student({
         discMath4
     ]
 })
+
+student4.calculateRA();
+student4.getTotalRac();
 
 const student5 = new Student({
     id: 34748435,
@@ -641,6 +663,9 @@ const student5 = new Student({
     ]
 })
 
+student5.calculateRA();
+student5.getTotalRac();
+
 const student6 = new Student({
     id: 23591022,
     email: "chocotorbellino@gmail.com",
@@ -653,6 +678,9 @@ const student6 = new Student({
         discMath6
     ]
 })
+
+student6.calculateRA();
+student6.getTotalRac();
 
 const student7 = new Student({
     id: 26208040,
@@ -667,6 +695,9 @@ const student7 = new Student({
     ]
 })
 
+student7.calculateRA();
+student7.getTotalRac();
+
 const student8 = new Student({
     id: 29853495 ,
     email: "espirituoso@gmail.com",
@@ -679,6 +710,9 @@ const student8 = new Student({
         discMath8
     ]
 })
+
+student8.calculateRA();
+student8.getTotalRac();
 
 let students = [
     student1,
