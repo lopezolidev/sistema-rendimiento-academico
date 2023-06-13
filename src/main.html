@@ -109,6 +109,7 @@
                     </p>
                     <p>
                         Es decir, escenario ideal: 20 puntos obtenidos en el examen mensual, el cual el estudiante realizó 40 horas de estudio para dicha materia.
+                        Por tanto, un índice ideal de Rendimiento académico es 0.5 es decir: 20 puntos obtenidos en la evaluacion mensual, con 40 horas de estudio en dicho mes.
                     </p>                    
                 </article>
                 <h2>¿Otros Indicadores de Interés?</h2>
@@ -130,7 +131,7 @@
                         <h3>Instituciones</h3>
 
                         <section class="slots_container">
-                            <div class="UCV location">UCV</div>
+                            <div class="UCV location" id="UCV-btn">UCV</div>
                             <div class="USB location">USB</div>
                             <div class="UCAB location">UCAB</div>
                             <div class="UNEXPO location">UNEXPO</div>
@@ -141,10 +142,9 @@
                         <h3>Facultades</h3>
 
                         <section class="slots_container">
-                            <div class="faculty location">Facultad Agro</div>
-                            <div class="faculty location">Facultad Arquitectura y Urbanismo</div>
-                            <div class="faculty location">Facultad de Ciencias</div>
-                            <div class="faculty location">Facultad de Ciencias </div>                    
+                            <div class="faculty location">Facultad de Agronomía</div>
+                            <div class="faculty location">Facultad de Arquitectura y Urbanismo</div>
+                            <div class="faculty location" id="ciens-btn">Facultad de Ciencias </div>                    
                             <div class="faculty location">Facultad de Farmacia</div>                    
                             <div class="faculty location">Facultad de Humanidades y Educacion</div>                    
                             <div class="faculty location">Facultad de Ingenieria</div>                    
@@ -159,7 +159,7 @@
                         <h3>Escuelas</h3>
                         <section class="slots_container">
                             <div class="bio location">Biologia</div>
-                            <div class="comp location">Computacion</div>
+                            <div class="comp location" id="compSci-btn">Computacion</div>
                             <div class="fis location">Fisica</div>
                             <div class="geoquim location">Geoquimica</div>
                             <div class="mat location">Matematica</div>
@@ -170,7 +170,7 @@
                     <div class="location_container loc_con_4">
                         <h3>Ofertas</h3>
                         <section class="slots_container">
-                            <div class="pregra location">Pregrado</div>
+                            <div class="pregra location" id="preg-btn">Pregrado</div>
                             <div class="pregra location">Posgrado</div>
                             <div class="pregra location">Extension</div>
                         </section>
@@ -178,7 +178,7 @@
                     <div class="location_container loc_con_5">
                         <h3>Semestres</h3>
                         <section class="slots_container">
-                            <div class="s1 location">Semestre I</div>
+                            <div class="s1 location" id="smI">Semestre I</div>
                             <div class="s1 location">Semestre II</div>
                             <div class="s1 location">Semestre III</div>
                             <div class="s1 location">Semestre IV</div>
@@ -202,9 +202,103 @@
                 </section>
             </div>
             <div class="location_container loc_con_7">
-                <h2>Mi perfil</h2>
+
                 <section class="performance-display">
                     <!-- George section -->
+
+                    <!-- <nav >
+                        <a class="btn-neon centro" id="notas">
+                        <span id="span1"></span>
+                        <span id="span2"></span>
+                        <span id="span3"></span>
+                        <span id="span4"></span>
+                        Notas
+                       </a>
+                       <a class="btn-neon centro" id="rendimiento">
+                        <span id="span1"></span>
+                        <span id="span2"></span>
+                        <span id="span3"></span>
+                        <span id="span4"></span>
+                        Rendimiento
+                       </a>
+                       <a class="btn-neon centro" id="materias">
+                        <span id="span1"></span>
+                        <span id="span2"></span>
+                        <span id="span3"></span>
+                        <span id="span4"></span>
+                        Materias
+                       </a>
+                       <a class="btn-neon centro" id="print_notas">
+                        <span id="span1"></span>
+                        <span id="span2"></span>
+                        <span id="span3"></span>
+                        <span id="span4"></span>
+                        Imprimir notas
+                       </a>
+                    </nav> -->
+                    <article>
+                        <h2>Mi perfil</h2>
+                        <h3>Id:</h3>
+                        <h3>E-mail:</h3>
+                    </article>
+
+
+                    <div class="performance-wrapper">
+                        <div class="grades perf_cont">
+                            <div class="grade_perf_cont">
+                                <h2 class="perf_subject_title"> " Asignatura 1" </h2>
+                            <div class="grades_container perf_subcontainer">
+                                <p class="perf_grade1">Nota 1: </p>
+                                <p class="perf_grade2">Nota 2: </p>
+                                <p class="perf_grade3">Nota 3: </p>
+                                <p class="perf_grade4">Nota 4: </p>
+                                <p class="study_time">Horas de estudio: </p>
+                            </div>
+
+                            </div>
+                                                        <!-- <h2 class="perf_subject_title"> " Asignatura 2" </h2>
+                            <div class="grades_container perf_subcontainer">
+                                <p class="perf_grade1">Nota 1: </p>
+                                <p class="perf_grade2">Nota 2: </p>
+                                <p class="perf_grade3">Nota 3: </p>
+                                <p class="perf_grade4">Nota 4: </p>
+                                <p class="study_time">Horas de estudio: </p>
+                            </div>
+                            <h2 class="perf_subject_title"> " Asignatura 3" </h2>
+                            <div class="grades_container perf_subcontainer">
+                                <p class="perf_grade1">Nota 1: </p>
+                                <p class="perf_grade2">Nota 2: </p>
+                                <p class="perf_grade3">Nota 3: </p>
+                                <p class="perf_grade4">Nota 4: </p>
+                                <p class="study_time">Horas de estudio: </p>
+                            </div>
+                            <h2 class="perf_subject_title"> " Asignatura 4" </h2>
+                            <div class="grades_container perf_subcontainer">
+                                <p class="perf_grade1">Nota 1: </p>
+                                <p class="perf_grade2">Nota 2: </p>
+                                <p class="perf_grade3">Nota 3: </p>
+                                <p class="perf_grade4">Nota 4: </p>
+                                <p class="study_time">Horas de estudio: </p>
+                            </div> -->
+                        </div>
+                        <div class="performance-indicator perf_cont">
+                            <h2>Rendimiento académico total: </h2>
+                            <div class="perf_subcontainer">
+                                <p class="perf_ind"></p>
+                                <p class="perf_recom"></p>
+                            </div>
+                        </div>
+                        <!-- <div class="subjects perf_cont">
+                            <h2 class="perf_subject">Asignaturas</h2>
+                            <div class="perf_subjects_container  perf_subcontainer">
+                                <p class="perf_subject1">Asignatura 1: </p>
+                                <p class="perf_subject2">Asignatura 2: </p>
+                                <p class="perf_subject3">Asignatura 3: </p>
+                                <p class="perf_subject4">Asignatura 4: </p>
+                            </div>
+                        </div> -->
+                    </div>
+
                 </section>
             </div>    
         </section>

@@ -32,6 +32,12 @@ function home(){
     homeScreen.classList.remove('inactive');
     startSite.classList.add('inactive');
     userSection.classList.add('inactive');
+    backBtn.classList.add('inactive');
+    institutions.classList.remove('inactive');
+    faculties.classList.add('inactive');
+    schools.classList.add('inactive');
+    offers.classList.add('inactive');
+    semesters.classList.add('inactive');
 }
 
 
