@@ -4,7 +4,6 @@ window.addEventListener('hashchange', navigator, false);
 
 
 function navigator(){
-    console.log({ location });
 
     if(location.hash.startsWith('#login')){
         login();
@@ -47,7 +46,10 @@ function myClass(){
     homeScreen.classList.add('inactive');
     userSection.classList.remove('inactive');
     studentSection.classList.add('inactive');
-    renderStudents(studentsCardsSection, students, currentUser)
+
+    let usuario = JSON.parse(localStorage.getItem('currentUser'))
+    
+    renderStudents(studentsCardsSection, students, usuario)
 }
 
 function myProfile(){
@@ -56,5 +58,14 @@ function myProfile(){
     homeScreen.classList.add('inactive');
     userSection.classList.remove('inactive');
     teacherSection.classList.add('inactive');
-    renderSubject(performance_wrapper, currentUser);
+
+    // let j = 0;
+    // while(j < students.length){
+        
+    //     j++;
+    // }
+
+    let usuario = JSON.parse(localStorage.getItem('currentUser'))
+
+    renderSubject(performance_wrapper, usuario, usuario.id);
 }

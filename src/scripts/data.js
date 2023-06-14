@@ -54,6 +54,7 @@ class Student extends User {
         courses = [],
         rac = [],
         ap,
+        r_a,
     }
     = {
         id:1,
@@ -61,6 +62,7 @@ class Student extends User {
         password: "password",
         profesor_status: false,
         ap: 0,
+        r_a: 0,
     }) //setting default values to keys as literal object in the constructor)
     {
         super(        
@@ -77,6 +79,7 @@ class Student extends User {
         this.courses = courses;
         this.rac = rac;
         this.ap = ap;
+        this.r_a = r_a;
     }
     addCourse(course){
         this.courses.push(course);
@@ -88,15 +91,18 @@ class Student extends User {
         }
     }
     calculateRA(){
+        this.rac = [];
         let i = 0;
         while(i < this.courses.length){
             this.rac.push(this.courses[i].getAP());
             i++;
         }
+
         return this.rac;
         // return avg / this.rac.length;
     }
     getTotalRac(){
+        this.ap = 0;
         let avg = 0;
         let i = 0;
         while(i < this.rac.length){
@@ -104,6 +110,9 @@ class Student extends User {
             i++
         }
         this.ap = parseFloat(((avg / this.rac.length).toFixed(2)) * (100/0.5));
+        if(this.ap > 100){
+            this.ap = 100;
+        } 
     }
 } //adding OOP to construct students from class User, therefore adding methods to the Student unavailable to the teacher
 
@@ -115,12 +124,14 @@ class Courses {
         studyHours,
         grades = [],
         ap,
+        gradeAvg,
     } = {
         id: 1,
         name: "name",
         credits: 1,
         studyHours: 0,
         ap: 0,
+        gradeAvg: 0
     })
     {
         this.id = id;
@@ -129,6 +140,7 @@ class Courses {
         this.grades = grades;
         this.studyHours = studyHours;
         this.ap = ap;
+        this.gradeAvg = gradeAvg;
     }
     getId(){
         return this.id;
@@ -146,13 +158,27 @@ class Courses {
         return this.studyHours;
     }
     getAP(){
+        this.ap = 0;
+
         let i = 0;
         let totalGrades = 0;
         while(i < this.grades.length){
             totalGrades += this.grades[i];
             i++;
         }
+
+
+
         this.ap = parseFloat((totalGrades / this.getStudyHours()).toFixed(2));
+
+    
+
+        if(this.ap > 0.5){
+            this.ap = (1 - this.ap);
+            if(this.ap < 0){
+                this.ap = -1 * (this.ap);
+            }
+        }
 
         return this.ap;
     }
@@ -163,7 +189,9 @@ class Courses {
             total += this.grades[i];
             i++;
         }
-        return total / this.grades.length;
+        this.gradeAvg = total / this.grades.length;
+
+        return this.gradeAvg;
     }
 } //class to create courses for students
 
@@ -221,42 +249,42 @@ const algProg8 = new Courses({
     credits: 6,
 });
 
-algProg1.studyHours = 76;
+algProg1.studyHours = 152;
 algProg1.grades.push(10)
 algProg1.grades.push(18);
 algProg1.getAP();
 
-algProg2.studyHours = 58;
+algProg2.studyHours = 116;
 algProg2.grades.push(12)
 algProg2.grades.push(07);
 algProg2.getAP();
 
-algProg3.studyHours = 80;
+algProg3.studyHours = 160;
 algProg3.grades.push(19)
 algProg3.grades.push(15);
 algProg3.getAP();
 
-algProg4.studyHours = 52;
+algProg4.studyHours = 104;
 algProg4.grades.push(08)
 algProg4.grades.push(13);
 algProg4.getAP();
 
-algProg5.studyHours = 66;
+algProg5.studyHours = 132;
 algProg5.grades.push(13)
 algProg5.grades.push(11);
 algProg5.getAP();
 
-algProg6.studyHours = 50;
+algProg6.studyHours = 100;
 algProg6.grades.push(10)
 algProg6.grades.push(20);
 algProg6.getAP();
 
-algProg7.studyHours = 60;
+algProg7.studyHours = 120;
 algProg7.grades.push(9)
 algProg7.grades.push(14);
 algProg7.getAP();
 
-algProg8.studyHours = 72;
+algProg8.studyHours = 144;
 algProg8.grades.push(11)
 algProg8.grades.push(17);
 algProg8.getAP();
@@ -312,42 +340,42 @@ const Intro8 = new Courses({
     credits: 4,
 });
 
-Intro1.studyHours = 60;
+Intro1.studyHours = 120;
 Intro1.grades.push(13);
 Intro1.grades.push(12);
 Intro1.getAP();
 
-Intro2.studyHours = 64;
+Intro2.studyHours = 128;
 Intro2.grades.push(10);
 Intro2.grades.push(9);
 Intro2.getAP();
 
-Intro3.studyHours = 74;
+Intro3.studyHours = 148;
 Intro3.grades.push(18);
 Intro3.grades.push(12);
 Intro3.getAP();
 
-Intro4.studyHours = 80;
+Intro4.studyHours = 160;
 Intro4.grades.push(3);
 Intro4.grades.push(20);
 Intro4.getAP();
 
-Intro5.studyHours = 56;
+Intro5.studyHours = 112;
 Intro5.grades.push(12);
 Intro5.grades.push(19);
 Intro5.getAP();
 
-Intro6.studyHours = 28;
+Intro6.studyHours = 56;
 Intro6.grades.push(17);
 Intro6.grades.push(8);
 Intro6.getAP();
 
-Intro7.studyHours = 40;
+Intro7.studyHours = 80;
 Intro7.grades.push(15);
 Intro7.grades.push(14);
 Intro7.getAP();
 
-Intro8.studyHours = 62;
+Intro8.studyHours = 124;
 Intro8.grades.push(16);
 Intro8.grades.push(12);
 Intro8.getAP();
@@ -407,43 +435,43 @@ const math8 = new Courses({
     credits: 6,
 });
 
-math1.studyHours = 80;
+math1.studyHours = 160;
 math1.grades.push(12);
 math1.grades.push(18);
 math1.getAP();
 
-math2.studyHours = 40;
+math2.studyHours = 80;
 math2.grades.push(18);
 math2.grades.push(8);
 math2.getAP();
 
 
-math3.studyHours = 20;
+math3.studyHours = 40;
 math3.grades.push(7);
 math3.grades.push(4);
 math3.getAP();
 
-math4.studyHours = 42;
+math4.studyHours = 84;
 math4.grades.push(11);
 math4.grades.push(18);
 math4.getAP();
 
-math5.studyHours = 16;
+math5.studyHours = 32;
 math5.grades.push(2);
 math5.grades.push(1);
 math5.getAP();
 
-math6.studyHours = 48;
+math6.studyHours = 96;
 math6.grades.push(14);
 math6.grades.push(10);
 math6.getAP();
 
-math7.studyHours = 60;
+math7.studyHours = 120;
 math7.grades.push(16);
 math7.grades.push(17);
 math7.getAP();
 
-math8.studyHours = 72;
+math8.studyHours = 144;
 math8.grades.push(10);
 math8.grades.push(19);
 math8.getAP();
@@ -502,43 +530,43 @@ const discMath8 = new Courses({
     credits: 4,
 }) 
 
-discMath1.studyHours = 70;
+discMath1.studyHours = 140;
 discMath1.grades.push(12);
 discMath1.grades.push(20);
 discMath1.getAP();
 
-discMath2.studyHours = 50;
+discMath2.studyHours = 100;
 discMath2.grades.push(10);
 discMath2.grades.push(8);
 discMath2.getAP();
 
 
-discMath3.studyHours = 74;
+discMath3.studyHours = 148;
 discMath3.grades.push(18);
 discMath3.grades.push(18);
 discMath3.getAP();
 
-discMath4.studyHours = 60;
+discMath4.studyHours = 120;
 discMath4.grades.push(17);
 discMath4.grades.push(2);
 discMath4.getAP();
 
-discMath5.studyHours = 56;
+discMath5.studyHours = 112;
 discMath5.grades.push(10);
 discMath5.grades.push(19);
 discMath5.getAP();
 
-discMath6.studyHours = 64;
+discMath6.studyHours = 128;
 discMath6.grades.push(8);
 discMath6.grades.push(20);
 discMath6.getAP();
 
-discMath7.studyHours = 50;
+discMath7.studyHours = 100;
 discMath7.grades.push(13);
 discMath7.grades.push(16);
 discMath7.getAP();
 
-discMath8.studyHours = 52;
+discMath8.studyHours = 104;
 discMath8.grades.push(19);
 discMath8.grades.push(10);
 discMath8.getAP();
@@ -584,7 +612,7 @@ let teachers = [
     teacher4,
 ];
 
-console.log(teachers)
+
 
 const student1 = new Student({
     id: 28457966,
@@ -725,6 +753,7 @@ let students = [
     student8,
 ]
 
-console.log(students)
-
 //DB for manipulation of students and teachers
+
+
+// ./

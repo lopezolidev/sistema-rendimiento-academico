@@ -2,61 +2,37 @@
   {
     "name": "Jane Doe",
     "favorite_game": "Stardew Valley",
-    "subscriber": false
+    "subscriber": false,
+    "games": [1, 2, 3, 4]
+  },
+  {
+    "name": "JohEWFREAFG n Doe",
+    "favorite_game": "DefwE Quest XI",
+    "subscriber": true,
+    "games": [1, 2, 3, 4]
   },
   {
     "name": "John Doe",
-    "favorite_game": "Dragon Quest XI",
-    "subscriber": true
+    "favorite_game": "DrEAR GQuest XI",
+    "subscriber": true,
+    "games": [1, 2, 3, 4]
+  },
+  {
+    "name": "JohnAREW GAR  Doe",
+    "favorite_game": "Dragon QGAE GAERGuest XI",
+    "subscriber": true,
+    "games": [1, 2, 3, 4]
   },
   {
     "name": "John Doe",
-    "favorite_game": "Dragon Quest XI",
-    "subscriber": true
+    "favorite_game": "DrAER GEATGAE on Quest XI",
+    "subscriber": true,
+    "games": [1, 2, 3, 4]
   },
   {
-    "name": "John Doe",
-    "favorite_game": "Dragon Quest XI",
-    "subscriber": true
-  },
-  {
-    "name": "John Doe",
-    "favorite_game": "Dragon Quest XI",
-    "subscriber": true
-  },
-  {
-    "name": "John Doe",
-    "favorite_game": "Dragon Quest XI",
-    "subscriber": true
-  },
-  {
-    "name": "John Doe",
-    "favorite_game": "Dragon Quest XI",
-    "subscriber": true
-  },
-  {
-    "name": "John Doe",
-    "favorite_game": "Dragon Quest XI",
-    "subscriber": true
-  },
-  {
-    "name": "John Doe",
-    "favorite_game": "Dragon Quest XI",
-    "subscriber": true
-  },
-  {
-    "name": "John Doe",
-    "favorite_game": "Dragon Quest XI",
-    "subscriber": true
-  },
-  {
-    "name": "John Doe",
-    "favorite_game": "Dragon Quest XI",
-    "subscriber": true
-  },
-  {
-    "name": "John Doe",
-    "favorite_game": "Dragon Quest XI",
-    "subscriber": true
+    "name": "Jame sdfawe",
+    "favorite_game": "wefwef",
+    "subscriber": false,
+    "games": [1, 2, 3, 4]
   }
 ]

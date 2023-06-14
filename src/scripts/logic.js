@@ -115,6 +115,7 @@ form.addEventListener('submit', e => {
     )
     // console.log({data})
     currentUser = validation(data);
+    localStorage.setItem('currentUser', JSON.stringify(currentUser));
 
     if(entranceFlag){
         location.hash = '#home';
@@ -133,6 +134,7 @@ singInForm.addEventListener('submit', e => {
     console.log({sign_in_data})  //retrieving information from user
 
     currentUser = login_user(sign_in_data); 
+    localStorage.setItem('currentUser', JSON.stringify(currentUser));
 
     // console.log(currentUser);
     // console.log(entranceFlag);
@@ -223,67 +225,201 @@ semestreI.addEventListener('click', () => {
 
 // rendering class section ↓ STUDENTS CARDS
 
+function exportar(data, fileName){
+    const a = document.createElement("a");
+    const contenido = data;
+
+    const blob = new Blob([contenido], {type: "octet/stream"});
+
+    const url = window.URL.createObjectURL(blob);
+    
+    a.href = url;
+    a.download = fileName;
+    a.click();
+    window.URL.revokeObjectURL(url);
+}
+
 function renderStudents(studentsContainer, studentsArray, currentUser){
-    studentsContainer.innerHTML = '';
+    let j = 0;
+    while(j < students.length){
+        // console.log(students)
+        let k = 0;
+        while(k < students[j].courses.length){
+            students[j].courses[k].getAP();
+            students[j].courses[k].getGradesAvg();
+            k++;
+        } //function to calculate Academic performance for each subject
+        students[j].calculateRA();
+        students[j].getTotalRac();
+        j++;
+    }
+    
 
-    myClassHeader.children[1].append(`${currentUser.courses[0].name}`);
+    if(localStorage.getItem('students')){
+        studentsArray = JSON.parse(localStorage.getItem('students'));
+    }
 
-    let student_cards_box = [];
- 
-    student_cards_box = studentsArray.map(student => {
-        const student_card = document.createElement('div');
-        student_card.classList.add('student-card');
+        studentsContainer.innerHTML = '';
 
-        const student_card_Id = document.createElement('h3');
-        student_card_Id.innerText = `Id: ${student.id}`;
 
-        const student_card_email = document.createElement('h3');
-        student_card_email.innerText = `Email: ${student.email}`;
+        myClassHeader.children[1].innerText = '';
+        myClassHeader.children[1].innerText = `Asignatura: ${currentUser.courses[0].name}`;
 
-        const student_card_grades = document.createElement('div');
-        student_card_grades.classList.add('student-card-grades');
+    
+        let student_cards_box = [];
+     
+        student_cards_box = studentsArray.map(student => {
+            const student_card = document.createElement('div');
+            student_card.classList.add('student-card');
+    
+            const student_card_Id = document.createElement('h3');
+            student_card_Id.innerText = `Id: ${student.id}`;
+    
+            const student_card_email = document.createElement('h3');
+            student_card_email.innerText = `Email: ${student.email}`;
+    
+            const student_card_grades = document.createElement('div');
+            student_card_grades.classList.add('student-card-grades');
+    
+            const nota1 = document.createElement('h4');
+            const nota2 = document.createElement('h4');
+            const nota3 = document.createElement('h4');
+            const nota4 = document.createElement('h4');
+            const promedio = document.createElement('h4');
+            const rendimiento = document.createElement('h4');
+    
+            
+            student.courses.map(course => {
+                // console.log(course)
+                if(course.id === currentUser.courses[0].id){
+                    nota1.innerText = `Nota 1: ${course.grades[0]}`;
+                    nota2.innerText = `Nota 2: ${course.grades[1]}`;
+                    nota3.innerText = `Nota 3: ${course.grades[2]}`;
+                    nota4.innerText = `Nota 4: ${course.grades[3]}`;
+                    promedio.innerText = `Promedio: ${course.gradeAvg}`;
+                    rendimiento.innerText = `Rendimiento: ${parseInt((course.ap) * (100 / 0.5).toFixed(2))}%`;
 
-        const nota1 = document.createElement('h4');
-        const nota2 = document.createElement('h4');
-        const nota3 = document.createElement('h4');
-        const nota4 = document.createElement('h4');
-        const promedio = document.createElement('h4');
-        const rendimiento = document.createElement('h4');
+                }
+            })
+    
+            student_card_grades.append(nota1, nota2, nota3, nota4, promedio, rendimiento);
+    
+            const downloadGradesBtn = document.createElement('button');
+            downloadGradesBtn.classList.add('student-card_button');
+            // downloadGradesBtn.setAttribute('id', 'print_notas');
+            downloadGradesBtn.innerText = 'Descargar Datos';
 
-        
-        student.courses.map(course => {
-            if(course.id === currentUser.courses[0].id){
-                nota1.innerText = `Nota 1: ${course.grades[0]}`;
-                nota2.innerText = `Nota 2: ${course.grades[1]}`;
-                nota3.innerText = `Nota 3: ${course.grades[2]}`;
-                nota4.innerText = `Nota 4: ${course.grades[3]}`;
-                promedio.innerText = `Promedio: ${course.getGradesAvg()}`;
-                rendimiento.innerText = `Rendimiento: ${parseFloat((course.getAP()) * (100 / 0.5).toFixed(2))}%`;
-            }
+            downloadGradesBtn.addEventListener('click', () => {
+                
+                const studentData = `${student_card_Id.innerText}, 
+                ${student_card_email.innerText}, 
+                ${student_card_grades.innerText},
+                `
+
+                const nombreArchivo = "datosEstudiante.txt";
+
+                exportar(studentData, nombreArchivo);
+            }); //exporting function
+    
+            student_card.append(student_card_Id, student_card_email, student_card_grades, downloadGradesBtn);
+    
+            return student_card;
         })
 
-        student_card_grades.append(nota1, nota2, nota3, nota4, promedio, rendimiento);
+    
+        studentsContainer.append(...student_cards_box);
+    }
+ //function for rendering students with their own information according to section
 
-        const downloadGradesBtn = document.createElement('button');
-        downloadGradesBtn.classList.add('student-card_button');
-        downloadGradesBtn.innerText = 'Descargar Datos';
+function displayContent(cont){
+    let someArray = students;
+   
+    if(JSON.parse(localStorage.getItem('students'))){
+        someArray = JSON.parse(localStorage.getItem('students'));
+    }
 
-        student_card.append(student_card_Id, student_card_email, student_card_grades, downloadGradesBtn);
+    const data = JSON.parse(cont);
 
-        return student_card;
+   
+
+    someArray.map(student => {
+        data.map(d => {
+            if(d.id == student.id){
+                let i = 0;
+                while(i < student.courses.length){
+                    if(d.subjectID == student.courses[i].id){
+                        student.courses[i].grades.push(...d.grades); //array destructuring for appending grades for each student grade
+                    }
+                    i++;
+                } //loop for altering grades for each student
+            } 
+        })
     })
+    
+    console.log(someArray)
 
-    console.log(student_cards_box);
+    let j = 0;
+    while(j < students.length){
+        // console.log(students)
+        let k = 0;
+        while(k < students[j].courses.length){
+            students[j].courses[k].getAP();
+            students[j].courses[k].getGradesAvg();
+            k++;
+        } //function to calculate Academic performance for each subject
+        students[j].calculateRA();
+        students[j].getTotalRac();
+        j++;
+    }
 
-    studentsContainer.append(...student_cards_box);
-} //function for rendering students with their own information according to section
+    // console.log(students)
 
+    localStorage.setItem('students', JSON.stringify(someArray));
+}
 
+function readInfo(e){
+    const file = e.target.files[0];
+    if(!file){
+        return;
+    }
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        const content = e.target.result;
+        // console.log(JSON.parse(content))
+
+    
+        displayContent(content);
+
+        console.log(JSON.parse(localStorage.getItem('currentUser')))
+
+        renderStudents(studentsCardsSection, students, JSON.parse(localStorage.getItem('currentUser')));
+        // renderContents(contents)
+    };
+    reader.readAsText(file);
+}
+
+// currentUser = teacher4
+
+subirNotasBtn.addEventListener('change', readInfo, false);
+window.addEventListener('DOMContentLoaded', renderStudents(studentsCardsSection, students, JSON.parse(localStorage.getItem('currentUser'))));
 
 // ============================================================== //
 
 // rendering student section ↓
 
+function exportar2(data, fileName){
+    const a = document.createElement("a");
+    const contenido = data;
+
+    const blob = new Blob([contenido], {type: "octet/stream"});
+
+    const url = window.URL.createObjectURL(blob);
+    
+    a.href = url;
+    a.download = fileName;
+    a.click();
+    window.URL.revokeObjectURL(url);
+}
 
 function recom(ap){
     if(ap <= 25){
@@ -297,10 +433,24 @@ function recom(ap){
     }
 }
 
-function renderSubject(performance_box, student){
+function renderSubject(performance_box, student, userID){
+
+    if(JSON.parse(localStorage.getItem('students'))){
+        const studentsList = JSON.parse(localStorage.getItem('students'));
+
+        let i = 0;
+        while(i < studentsList.length){
+            if(userID == studentsList[i].id){
+                student = studentsList[i];
+            }
+            i++;
+        }
+    }
+
+
     performance_box.innerHTML = '';
     
-    console.log({myProfileData})
+   console.log(student.courses)
 
     myProfileData.children[1].innerText = `Id: ${student.id}`
     myProfileData.children[2].innerText = `E-mail: ${student.email}`
@@ -333,7 +483,7 @@ function renderSubject(performance_box, student){
         perf_grade2.innerText = `Nota 2: ${course.grades[1]}`;
         perf_grade3.innerText = `Nota 3: ${course.grades[2]}`;
         perf_grade4.innerText = `Nota 4: ${course.grades[3]}`;
-        studyTime.innerText = `Horas de estudio: ${course.getStudyHours()}`;
+        studyTime.innerText = `Horas de estudio: ${course.studyHours}`;
 
         gradesContainer.append(perf_grade1, perf_grade2, perf_grade3, perf_grade4, studyTime);
         grade_perf_cont.append(gradeTitle, gradesContainer);
@@ -358,8 +508,8 @@ function renderSubject(performance_box, student){
     const subcontainer_perf_recom = document.createElement('p');
     subcontainer_perf_recom.classList.add('perf_recom');
 
-    student.calculateRA();
-    student.getTotalRac();
+    // student.calculateRA();
+    // student.getTotalRac();
     
     subcontainer_perf_ind.innerText = `${student.ap}%`;
     subcontainer_perf_recom.innerText = recom(student.ap);
@@ -369,6 +519,47 @@ function renderSubject(performance_box, student){
     const downloadData = document.createElement('button');
     downloadData.innerText = 'Descargar Datos';
     downloadData.classList.add('btn');
+    
+    console.log(gradesElements)
+
+    downloadData.addEventListener('click', () => {
+                
+        const studentData = `${myProfileData.children[1].innerText}, 
+        ${ myProfileData.children[2].innerText}, 
+        ${gradesElements[0].children[0].innerText},
+        ${gradesElements[0].children[1].children[0].innerText},
+        ${gradesElements[0].children[1].children[1].innerText},
+        ${gradesElements[0].children[1].children[2].innerText},
+        ${gradesElements[0].children[1].children[3].innerText},
+        ${gradesElements[0].children[1].children[4].innerText},
+        ${gradesElements[1].children[0].innerText},
+        ${gradesElements[1].children[1].children[0].innerText},
+        ${gradesElements[1].children[1].children[1].innerText},
+        ${gradesElements[1].children[1].children[2].innerText},
+        ${gradesElements[1].children[1].children[3].innerText},
+        ${gradesElements[1].children[1].children[4].innerText},
+        ${gradesElements[2].children[0].innerText},
+        ${gradesElements[2].children[1].children[0].innerText},
+        ${gradesElements[2].children[1].children[1].innerText},
+        ${gradesElements[2].children[1].children[2].innerText},
+        ${gradesElements[2].children[1].children[3].innerText},
+        ${gradesElements[2].children[1].children[4].innerText},
+        ${gradesElements[3].children[0].innerText},
+        ${gradesElements[3].children[1].children[0].innerText},
+        ${gradesElements[3].children[1].children[1].innerText},
+        ${gradesElements[3].children[1].children[2].innerText},
+        ${gradesElements[3].children[1].children[3].innerText},
+        ${gradesElements[3].children[1].children[4].innerText},
+        ${academic_perf_title.innerText},
+        Rendimiento: ${subcontainer_perf_ind.innerText},
+        Recomendaciones: ${subcontainer_perf_recom.innerText}
+        `
+
+        const nombreArchivo = "datosEstudiante.txt";
+
+        exportar2(studentData, nombreArchivo);
+    });
+
 
     academic_perf.append(academic_perf_title, academic_perf_subcontainer, downloadData);
 

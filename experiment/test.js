@@ -1,11 +1,53 @@
-function displayContent(content){
-    const contenido = JSON.parse(content);
+let contents = [
+    {
+        name: "Jane Doe",
+        favorite_game: "Stardew Valley",
+        subscriber: false,
+        games: [4, 3, 2, 1]
+      },
+      {
+        name: "JohEWFREAFG n Doe",
+        favorite_game: "DefwE Quest XI",
+        subscriber: true,
+        games: [1, 2, 8, 4]
+      },
+      {
+        name: "John Doe",
+        favorite_game: "DrEAR GQuest XI",
+        subscriber: true,
+        games: [1, 6, 3, 4]
+      },
+      {
+        name: "JohnAREW GAR  Doe",
+        favorite_game: "Dragon QGAE GAERGuest XI",
+        subscriber: true,
+        games: [1, 7, 3, 8]
+      },
+      {
+        name: "John Doe",
+        favorite_game: "DrAER GEATGAE on Quest XI",
+        subscriber: true,
+        games: [0, 0, 0, 4]
+      },
+      {
+        name: "Jame sdfawe",
+        favorite_game: "wefwef",
+        subscriber: false,
+        games: [1, 2, 5, 4]
+      }
+]
+
+function renderContents(contentsArray) {
+
+    if(JSON.parse(localStorage.getItem('data'))){
+        contentsArray = JSON.parse(localStorage.getItem('data'));
+    }
 
     const element = document.querySelector('.show2');
-
+    element.innerHTML = '';
     const cards_array = [];
     let counter = 1;
-    contenido.map((el) => {
+    contentsArray.map((el) => {
         const container = document.createElement('div'); //contenedor grande
         // const image_wrapper = document.createElement('div'); //contenedor de img
         const image = document.createElement('img'); //imagen
@@ -18,6 +60,7 @@ function displayContent(content){
         const name = document.createElement('span'); //nombre personaje
         const game = document.createElement('span'); //favourite game
         const subscriber = document.createElement('span'); //subscriber
+        const games = document.createElement('span');
 
 
         //añadido de clases a los elementos de HTML
@@ -40,12 +83,13 @@ function displayContent(content){
         name.innerText = `Name of character:  ${el.name}`;
         game.innerText = `Favourite game: ${el.favorite_game}`;
         subscriber.innerText = `It's a subscriber? ${el.subscriber}`;
+        games.innerText = `Games: ${el.games}`;
         // llenado de valores
 
         // image_wrapper.append(image); //pegar imagen en contenedor (image_wrapper)
         container.append(image)
         title_wrapper.append(title); //pegar titulo dentro de caja para titulos
-        description_box.append(name, game, subscriber); //pegando elementos descriptivos dentro de la description box
+        description_box.append(name, game, subscriber, games); //pegando elementos descriptivos dentro de la description box
         // container.append(image_wrapper); //pegando imagen
         container.append(title_wrapper); //pegar caja de titulo (Que ya tiene titulo)
         container.append(description_box); //pegando description box
@@ -55,15 +99,28 @@ function displayContent(content){
 
     element.append(...cards_array);
 
-    // console.log({cards_array}); //display en consola de arreglo de elementos HTML
+}
 
 
 
-    // element.append(container);
+function sameName(person, n){
+    return person.name === n;
+}
 
-    // element.innerText = content;
+function displayContent(cont){
+    const data = JSON.parse(cont);
+    // console.log(contents)
+    contents.map(e => {
+        data.map(d => {
+            if(e.name == d.name){
+                e.games = d.games;
+            }
+        })
+    }) //codigo para modificar "games"
 
-    console.log(contenido)
+    console.log(contents)
+
+    localStorage.setItem('data', JSON.stringify(contents));
 }
 
 function readInfo(e){
@@ -75,7 +132,11 @@ function readInfo(e){
     const reader = new FileReader();
     reader.onload = function(e) {
         const content = e.target.result;
+        // console.log(JSON.parse(content))
+
+
         displayContent(content);
+        renderContents(contents)
     };
     reader.readAsText(file);
 }
@@ -83,5 +144,4 @@ function readInfo(e){
 // console.log('hello')
 const file = document.querySelector('#file1');
 file.addEventListener('change', readInfo, false)
-
-
+window.addEventListener('DOMContentLoaded', renderContents(contents));

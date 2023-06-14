@@ -35,7 +35,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-image: url('./assets/cube_background.jpg');
+    background-image: url('../assets/cube_background.jpg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -402,6 +402,17 @@ h3 {
     align-items: center;
     align-content: center;
     padding-block: 4rem;
+}
+
+.upload_grades {
+    background-color: var(--main-color);
+    border: none;
+    outline: none;
+    padding: 2rem;
+    color: var(--tertiary-text-color);
+    font-size: 2rem;
+    font-weight: normal;
+    border-radius: 2rem;
 }
 
 .student-card {

@@ -36,29 +36,12 @@ const studentSection = document.querySelector(".loc_con_7");
 const notasBtn = document.getElementById('notas');
 const rendimientoBtn = document.getElementById('rendimiento');
 const materiasBtn = document.getElementById('materias');
-const printNotasBtn = document.getElementById('print_notas');
+
 const myProfileData = document.querySelector('.my_profile_data');
 
 const teacherSection = document.querySelector(".loc_con_6");
 const myClassHeader = document.querySelector('.loc_con_6--header');
 const studentsCardsSection = document.querySelector('.students-display');
 
+const subirNotasBtn = document.getElementById('subirNotas_btn');
 
-// console.log({studentsCardsSection})
-
-// console.log({gradesStudent})
-
-// gradesStudent.classList.add('inactive');
-
-// notasBtn.addEventListener('click', () => {
-//     console.log('hey')
-// })
-// rendimientoBtn.addEventListener('click', () => {
-//     console.log('hey2')
-// })
-// materiasBtn.addEventListener('click', () => {
-//     console.log('hey3')
-// })
-// printNotasBtn.addEventListener('click', () => {
-//     console.log('hey4')
-// })
